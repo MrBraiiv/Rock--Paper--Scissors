@@ -46,3 +46,7 @@ function getHumanChoice() {
   }
   // }
 }
+
+//- Create two variables: computerScore and humanScore, that takes the score, and initialy their value is set to zero;
+let computerScore = 0;
+let humanScore = 0;
