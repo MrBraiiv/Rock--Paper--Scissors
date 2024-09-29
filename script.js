@@ -24,3 +24,25 @@ function getComputerChoice() {
   }
   // }
 }
+
+// - Create getHumanChoice function *this function will take the user's choice*;
+function getHumanChoice() {
+  // || getHumanChoice {
+  // - Create a choice variable that takes the user's input;
+  let choice = prompt("rock, paper or scissors??");
+  // - Create a switch that returnes the choosen, and transform the choice to lowercase during that;
+  switch (choice.toLowerCase()) {
+    case "rock":
+      return "rock";
+      break;
+    case "paper":
+      return "paper";
+      break;
+    case "scissors":
+      return "scissors";
+      break;
+    default:
+      return "maybe you misstyped, choose rock, paper or scissors.";
+  }
+  // }
+}
