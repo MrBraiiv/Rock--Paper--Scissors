@@ -51,10 +51,9 @@ function getHumanChoice() {
 let computerScore = 0;
 let humanScore = 0;
 
-// - Create a playGround function that has two parameters: computerChoice and humanChoice;
-function playGround(computerChoice, humanChoice) {
-  // ||playGround(computerChoice, humanChoice) {
-  // - Move the code inside;
+// - Create a playRound function that has two parameters: computerChoice and humanChoice;
+function playRound(computerChoice, humanChoice) {
+  // ||playRound(computerChoice, humanChoice) {
   // Create the two variables computerChoice and humanChoice and put the choices inside of them so that the function doesn't miss use arguments;
 
   humanChoice = getHumanChoice();
@@ -105,3 +104,8 @@ function playGround(computerChoice, humanChoice) {
   }
   // }
 }
+
+//Create the playGame function, which calls a playRound function that makes five rounds on the game.
+// function playGame() {
+
+// }
