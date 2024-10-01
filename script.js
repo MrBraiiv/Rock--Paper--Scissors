@@ -42,70 +42,71 @@ function getHumanChoice() {
       return "scissors";
       break;
     default:
-      return "maybe you misstyped, choose rock, paper or scissors.";
-  }
-  // }
-}
-
-//- Create two variables: computerScore and humanScore, that takes the score, and initialy their value is set to zero;
-let computerScore = 0;
-let humanScore = 0;
-
-// - Create a playRound function that has two parameters: computerChoice and humanChoice;
-function playRound(computerChoice, humanChoice) {
-  // ||playRound(computerChoice, humanChoice) {
-  // Create the two variables computerChoice and humanChoice and put the choices inside of them so that the function doesn't miss use arguments;
-
-  humanChoice = getHumanChoice();
-  computerChoice = getComputerChoice();
-
-  // - Create an if statement that if the computer and human has the same choice will return "object equals object, no one wins!", else create an if inside the else that if compuerChoice = "rock" and getHumanChoice = "paper", increase the human score and return "paper beats rock! HUMAN WINS" and continue with the game irony.
-  if (computerChoice === humanChoice) {
-    return `Human chooses: ${humanChoice}
-    Computer chooses: ${computerChoice}
-    ${computerChoice} equals ${humanChoice}, no one wins
-    Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-  } else {
-    if (computerChoice === "rock" && humanChoice === "paper") {
-      humanScore++;
-      return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${humanChoice} beats ${computerChoice}! human wins!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-    } else if (computerChoice === "paper" && humanChoice === "scissors") {
-      humanScore++;
-      return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${humanChoice} beats ${computerChoice}! human wins!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-    } else if (computerChoice === "scissors" && humanChoice === "rock") {
-      humanScore++;
-      return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${humanChoice} beats ${computerChoice}! human wins!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-    } else {
-      computerScore++;
-      return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${computerChoice} beats ${humanChoice}! computer wins!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-    }
+      return "maybe you misstyped, choose rock";
   }
   // }
 }
 
 //Create the playGame function, which calls a playRound function that makes five rounds on the game.
-// function playGame() {
+function playGame() {
+  //- Create two variables: computerScore and humanScore, that takes the score, and initialy their value is set to zero;
+  let computerScore = 0;
+  let humanScore = 0;
 
-// }
+  // - Create a playRound function that has two parameters: computerChoice and humanChoice;
+  function playRound(computerChoice, humanChoice) {
+    // ||playRound(computerChoice, humanChoice) {
+    // Create the two variables computerChoice and humanChoice and put the choices inside of them so that the function doesn't miss use arguments;
+
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
+
+    // - Create an if statement that if the computer and human has the same choice will return "object equals object, no one wins!", else create an if inside the else that if compuerChoice = "rock" and getHumanChoice = "paper", increase the human score and return "paper beats rock! HUMAN WINS" and continue with the game irony.
+    if (computerChoice === humanChoice) {
+      return `Human chooses: ${humanChoice}
+    Computer chooses: ${computerChoice}
+    ${computerChoice} equals ${humanChoice}, NO ONE WINS!
+    Score:
+  Human:${humanScore}
+  Computer:${computerScore}`.replaceAll("\n", "");
+    } else {
+      if (computerChoice === "rock" && humanChoice === "paper") {
+        humanScore++;
+        return `Human chooses: ${humanChoice}
+      Computer chooses: ${computerChoice}
+      ${humanChoice} beats ${computerChoice}! HUMAN WINS!
+      Score:
+  Human:${humanScore}
+  Computer:${computerScore}`.replaceAll("\n", "");
+      } else if (computerChoice === "paper" && humanChoice === "scissors") {
+        humanScore++;
+        return `Human chooses: ${humanChoice}
+      Computer chooses: ${computerChoice}
+      ${humanChoice} beats ${computerChoice}! HUMAN WINS!
+      Score:
+  Human:${humanScore}
+  Computer:${computerScore}`.replaceAll("\n", "");
+      } else if (computerChoice === "scissors" && humanChoice === "rock") {
+        humanScore++;
+        return `Human chooses: ${humanChoice}
+      Computer chooses: ${computerChoice}
+      ${humanChoice} beats ${computerChoice}! HUMAN WINS!
+      Score:
+  Human:${humanScore}
+  Computer:${computerScore}`.replaceAll("\n", "");
+      } else {
+        computerScore++;
+        return `Human chooses: ${humanChoice}
+      Computer chooses: ${computerChoice}
+      ${computerChoice} beats ${humanChoice}! COMPUTER WINS!
+      Score:
+  Human:${humanScore}
+  Computer:${computerScore}`.replaceAll("\n", "");
+      }
+    }
+    // }
+  }
+  for (let i = 0; i < 5; i++) {
+    cl(playRound());
+  }
+}
