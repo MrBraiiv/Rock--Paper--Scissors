@@ -2,13 +2,8 @@ function cl(typeInConsole) {
   console.log(typeInConsole);
 }
 
-// - Create getComputerChoice function;
 function getComputerChoice() {
-  // - The getComputerChoice function will randomly choose between the three values: "rock", "paper", "scissors";
-  // ||getComputerChoise {
-  // - Create a random number generator using Math.random multiplied by 3 so it has three random values;
   const randomNumber = Math.floor(Math.random() * 3 + 1);
-  // - Create an switch that has three cases: case 1 = "rock", case 2 = "paper" case 3 = "scissors";
   switch (randomNumber) {
     case 1:
       return "rock";
@@ -25,12 +20,8 @@ function getComputerChoice() {
   // }
 }
 
-// - Create getHumanChoice function *this function will take the user's choice*;
 function getHumanChoice() {
-  // || getHumanChoice {
-  // - Create a choice variable that takes the user's input;
   let choice = prompt("rock, paper or scissors??");
-  // - Create a switch that returnes the choosen, and transform the choice to lowercase during that;
   switch (choice.toLowerCase()) {
     case "rock":
       return "rock";
@@ -44,24 +35,16 @@ function getHumanChoice() {
     default:
       return "maybe you misstyped, choose rock";
   }
-  // }
 }
 
-//Create the playGame function, which calls a playRound function that makes five rounds on the game.
 function playGame() {
-  //- Create two variables: computerScore and humanScore, that takes the score, and initialy their value is set to zero;
   let computerScore = 0;
   let humanScore = 0;
 
-  // - Create a playRound function that has two parameters: computerChoice and humanChoice;
   function playRound(computerChoice, humanChoice) {
-    // ||playRound(computerChoice, humanChoice) {
-    // Create the two variables computerChoice and humanChoice and put the choices inside of them so that the function doesn't miss use arguments;
-
-    humanChoice = getHumanChoice();
     computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
 
-    // - Create an if statement that if the computer and human has the same choice will return "object equals object, no one wins!", else create an if inside the else that if compuerChoice = "rock" and getHumanChoice = "paper", increase the human score and return "paper beats rock! HUMAN WINS" and continue with the game irony.
     if (computerChoice === humanChoice) {
       return `Human chooses: ${humanChoice}
     Computer chooses: ${computerChoice}
@@ -104,9 +87,16 @@ function playGame() {
   Computer:${computerScore}`.replaceAll("\n", "");
       }
     }
-    // }
   }
   for (let i = 0; i < 5; i++) {
     cl(playRound());
+  }
+
+  if (humanScore === computerScore) {
+    return "NO ONE WINS THE GAME!";
+  } else if (humanScore >= computerScore) {
+    return "HUMAN WINS THE GAME!!";
+  } else {
+    return "COMPUTER WINS THE GAME!";
   }
 }
