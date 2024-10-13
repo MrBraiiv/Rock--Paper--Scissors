@@ -1,6 +1,69 @@
-function cl(typeInConsole) {
-  console.log(typeInConsole);
+const buttons = document.querySelector(".buttons");
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+buttons.addEventListener("click", playRound);
+
+let computerScore = 0;
+let humanScore = 0;
+
+function playRound(event, computerChoice, humanChoice) {
+  const humanPara = document.querySelector(".humanPara");
+  const computerPara = document.querySelector(".computerPara");
+  const winnerPara = document.querySelector(".winnerPara");
+
+  const scoresPara = document.querySelector(".scoresPara");
+
+  const gameWinner = document.querySelector(".gameWinner");
+
+  humanPara.textContent = "";
+  computerPara.textContent = "";
+  winnerPara.textContent = "";
+  scoresPara.textContent = "";
+  gameWinner.textContent = "";
+
+  computerChoice = getComputerChoice();
+  humanChoice = `${event.target.id}`;
+  event.stopPropagation();
+
+  humanPara.textContent = `Human chooses: ${humanChoice}`;
+  computerPara.textContent = `Computer chooses: ${computerChoice}`;
+
+  if (computerChoice === humanChoice) {
+    winnerPara.textContent = `NO ONE WINS!`;
+  } else {
+    if (computerChoice === "rock" && humanChoice === "paper") {
+      humanScore++;
+      winnerPara.textContent = `HUMAN WINS!`;
+    } else if (computerChoice === "paper" && humanChoice === "scissors") {
+      humanScore++;
+      winnerPara.textContent = `HUMAN WINS!`;
+    } else if (computerChoice === "scissors" && humanChoice === "rock") {
+      humanScore++;
+      winnerPara.textContent = `HUMAN WINS!`;
+    } else {
+      computerScore++;
+      winnerPara.textContent = `COMPUER WINS!`;
+    }
+  }
+
+  scoresPara.textContent = `Human:${humanScore} \n Computer:${computerScore}`;
+
+  if (computerScore === 5 || humanScore === 5) {
+    let wins =
+      computerScore > humanScore
+        ? `COMPUTER IS THE WINNER!`
+        : `HUMAN IS THE WINNER!`;
+    computerScore = 0;
+    humanScore = 0;
+
+    gameWinner.textContent = wins;
+  }
 }
+
+//Functions section:
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -16,87 +79,5 @@ function getComputerChoice() {
       break;
     default:
       return "rock";
-  }
-  // }
-}
-
-function getHumanChoice() {
-  let choice = prompt("rock, paper or scissors??");
-  switch (choice.toLowerCase()) {
-    case "rock":
-      return "rock";
-      break;
-    case "paper":
-      return "paper";
-      break;
-    case "scissors":
-      return "scissors";
-      break;
-    default:
-      return "maybe you misstyped, choose rock";
-  }
-}
-
-function playGame() {
-  let computerScore = 0;
-  let humanScore = 0;
-
-  function playRound(computerChoice, humanChoice) {
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-
-    if (computerChoice === humanChoice) {
-      return `Human chooses: ${humanChoice}
-    Computer chooses: ${computerChoice}
-    ${computerChoice} equals ${humanChoice}, NO ONE WINS!
-    Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-    } else {
-      if (computerChoice === "rock" && humanChoice === "paper") {
-        humanScore++;
-        return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${humanChoice} beats ${computerChoice}! HUMAN WINS!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-      } else if (computerChoice === "paper" && humanChoice === "scissors") {
-        humanScore++;
-        return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${humanChoice} beats ${computerChoice}! HUMAN WINS!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-      } else if (computerChoice === "scissors" && humanChoice === "rock") {
-        humanScore++;
-        return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${humanChoice} beats ${computerChoice}! HUMAN WINS!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-      } else {
-        computerScore++;
-        return `Human chooses: ${humanChoice}
-      Computer chooses: ${computerChoice}
-      ${computerChoice} beats ${humanChoice}! COMPUTER WINS!
-      Score:
-  Human:${humanScore}
-  Computer:${computerScore}`.replaceAll("\n", "");
-      }
-    }
-  }
-  for (let i = 0; i < 5; i++) {
-    cl(playRound());
-  }
-
-  if (humanScore === computerScore) {
-    return "NO ONE WINS THE GAME!";
-  } else if (humanScore >= computerScore) {
-    return "HUMAN WINS THE GAME!!";
-  } else {
-    return "COMPUTER WINS THE GAME!";
   }
 }
