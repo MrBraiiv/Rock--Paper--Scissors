@@ -49,7 +49,7 @@ function playRound(event, computerChoice, humanChoice) {
     }
   }
 
-  scoresPara.textContent = `Human:${humanScore} \n Computer:${computerScore}`;
+  scoresPara.textContent = `Human:${humanScore} | Computer:${computerScore}`;
 
   if (computerScore === 5 || humanScore === 5) {
     let wins =
